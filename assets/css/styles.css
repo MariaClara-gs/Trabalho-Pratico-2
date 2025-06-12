@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: #dcffca ;
+}
+
+footer{
+    background-color: #dcffca;
+    padding: 10px;
+}
+
+/*Barra de navegação*/
+.logo{
+    width: 300px;
+    height: 200px;
+}
+.titulo{
+    text-align: start;
+}
+
+/*Rodapé*/
+
+.informacao{
+    display: inline-block;
+}
+
+.titulo-informacoes{
+    color:#4c9628; 
+    font-weight: bold;
+}
+
+.redes-sociais{
+    height: 40px;
+    width: 40px;
+}
+
+#ads .carousel-item img {
+    max-height: 420px;  
+    object-fit: cover;    
+    width: 100%;        
+  }
+
+/*Conteúdo de Detalhes.html*/
+
+/*Layout personalizado*/
+.img-conteudo{
+    width: 3131px;
+    height: 4196px;
+}
+
+.titulo-2{
+    color:#256e00;
+}
+
+.layout{
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.informacoes-de-preparo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.texto-layout{
+    font-size: 20px;
+}
+
+.texto-card{
+    font-size:20px;
+    font-style: italic;
+}
+
+.receita-conteudo-titulo{
+    background-color: #dcffca;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.receita-conteudo-titulo h4{
+    font-weight: bold;
+}
+
+.receita-conteudo div{
+    display: flex;
+    justify-content: center;
+}
+
+#modo-de-preparo{
+    list-style-position: inside;
+    text-align: start;
+}
+
+#modo-de-preparo li{
+    margin: 5px;
+}
+
+#ingredientes ul li p{
+    font-size: 20px;
+}
+
+#ingredientes li{
+    list-style: none;
+    display: inline-block;
+}
+
+.fotos-conteudo{
+    display: flex;
+    justify-content: center;
+}
+
+/*Media queries*/
+
+@media screen and (max-width:810px) {
+    .titulo-informacoes{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 983px){
+
+    .conteudo-informacao{
+        padding-top: 20px; 
+        justify-content: center;
+        width: 120%;
+    }
+
+    .div-img img{
+        height: 450px;
+        width: 350px;
+    }
+
+    .div-img{
+        display: flex;
+        justify-content: center;
+    }
+
+    .layout-section{
+        display: flex;
+        justify-content: center;
+    }
+
+    .texto-layout{
+        width:110%;
+        text-align: center;
+    }
+
+    .preparo{
+        margin-bottom: 5px;
+    }
+
+    #modo-de-preparo{
+        list-style-position: inside;
+        text-align: center;
+    }
+    
+    #modo-de-preparo li{
+        margin: 0px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:653px){
+    .receita-conteudo-titulo{
+        background-color: white;
+    }
+
+}

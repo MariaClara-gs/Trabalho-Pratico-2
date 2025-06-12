@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mundo das Delícias</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="assets/js/app.js" defer></script>
+</head>
+
+<body>
+    <header class="cabecalho"> <!--Cabeçalho-->
+        <nav class="navegacao navbar navbar-expand-sm py-2"> <!--barra de navegação-->
+            <div class="container">
+                <a class="navbar-brand d-flex" href="index.html"> <!--Logo-->
+                    <img class="logo img-fluid float-start" src="assets/img/logo.png" alt="O Mundo das Delícias Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuNavbar">
+                    <div class="navbar-nav ms-auto">
+                        <a href="#" class="categorias nav-link m-2.5">Carnes</a>
+                        <a href="#" class="categorias nav-link m-2.5">Massas</a>
+                        <a href="#" class="categorias nav-link m-2.5">Lanches</a>
+                        <a href="#" class="categorias nav-link m-2.5">Doces e Sobremesas</a>
+                        <a href="#" class="categorias nav-link m-2.5">Bolos e tortas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="mb-4"> <!--CARROSEL-->
+            <div class="m-5"> <!--Título-->
+                <div class="display-5 text-center pb-2 mb-4 border-bottom border-black border-2">
+                    Destaques
+                </div>
+            </div>
+            <div class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-touch="false" id="ads">
+                <!--Carrosel de destaques-->
+                <div class="carousel-indicators"> <!--Indicadores-->
+                </div>
+                <div class="carousel-inner"> <!--Conteúdo carrosel-->
+                </div>
+                <div> <!--Botões anterior e próximo-->
+                    <button class="carousel-control-prev" data-bs-target="#ads" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon">
+                        </span>
+                    </button>
+                    <button class="carousel-control-next" data-bs-target="#ads" data-bs-slide="next">
+                        <span class="carousel-control-next-icon">
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div class="m-5"> <!--Título-->
+            <div class="display-5 text-center pb-2 mb-4 border-bottom border-black border-2">
+                Todas a Receitas
+            </div>
+        </div>
+
+        <section class="container py-5"> <!--CARDS-->
+            <div class="row row-cols-1 row-cols-lg-3 row-cols-sm-2 g-3" id="container-cards"> <!--Conteúdos-->
+            </div>
+        </section>
+    </main>
+
+    <footer> <!--Rodapé com informações do autor-->
+        <div class="m-5">
+            <div class="display-6 pb-2 mb-4 border-bottom border-black border-2 col text-center">
+                Informações do(a) Aluno(a)
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <h5 class="titulo-informacoes">Sobre</h5> <!--sobre o projeto-->
+                    <p> Diretório de Receitas desenvolvido para o trabalho da disciplina de Desenvolvimento de
+                        Interfaces Web na PUC Minas. Este projeto é um diretório de receitas responsivo com diversas
+                        categorias.
+                    </p>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3 titulo-informacoes">Autoria</h5> <!--Sobre mim-->
+                    <div class="d-flex justify-content-center align-items-start">
+                        <i class="fa fa-user fa-3x me-3"></i>
+                        <div class="text-start">
+                            <p><strong>Aluno:</strong> Maria Clara Galvão Soares</p>
+                            <p><strong>Curso:</strong> Ciência da Computação</p>
+                            <p><strong>Turma:</strong> Manhã</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center"> <!--Redes sociais-->
+                    <h5 class="mb-3 titulo-informacoes">Redes Sociais:</h5>
+                    <div class="d-flex justify-content-center gap-3">
+                    <a href="https://www.instagram.com/" class="me-3"><img class="redes-sociais" src="assets/img/instagram.png"></a>
+                    <a href="https://www.facebook.com/" class="me-3"><img class="redes-sociais" src="assets/img/facebook.png"></a>
+                    <a href="https://x.com/" class="me-3"><img class="redes-sociais" src="assets/img/twitter.png"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

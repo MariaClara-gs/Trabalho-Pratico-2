@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mundo das Receitas</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/app.js" defer></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="cabecalho"> <!--Cabeçalho-->
+        <nav class="navegacao navbar navbar-expand-sm py-2"> <!--barra de navegação-->
+            <div class="container">
+                <a class="navbar-brand d-flex" href="index.html"> <!--Logo-->
+                    <img class="logo img-fluid float-start" src="assets/img/logo.png" alt="O Mundo das Delícias Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuNavbar">
+                    <div class="navbar-nav ms-auto">
+                        <a href="#" class="nav-link m-2.5">Carnes</a>
+                        <a href="#" class="nav-link m-2.5">Massas</a>
+                        <a href="#" class="nav-link m-2.5">Lanches</a>
+                        <a href="#" class="nav-link m-2.5">Doces e Sobremesas</a>
+                        <a href="#" class="nav-link m-2.5">Bolos e tortas</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main class="m-5"> <!--Conteúdo principal do site-->
+        <div class="display-5 text-center pb-2 mb-4 border-bottom border-black border-2">
+            Título Receita
+        </div>
+        <section class="d-flex justify-content-center layout-section"> <!--Informações-->
+            <div class="layout w-75"> <!--Layout personalizado com JSON-->
+                <div class="row">
+
+                    <div class="col-lg-4 div-img">
+                        <img src="assets/img/bolo-de-cenoura1.jpg" class="img-conteudo img-fluid" alt="bolo-de-cenoura">
+                    </div>
+
+                    <div class="col-lg-8 text-center conteudo-informacao">
+                        <h5 class="display-4 titulo-2">Uma delícia para o café da manhã!</h5>
+                        <p class="texto-layout">Um bolo fofinho, fácil de preparar, com uma deliciosa cobertura de
+                            chocolate que agrada todo mundo.</p>
+
+                        <div class="row justify-content-center"> <!--Informações sobre a receita em cards-->
+                            <div class="col-md-4  col-md-6 mb-3 mb-sm-0">
+                                <div class="card preparo"> <!--Para mostrar tempo de preparo-->
+                                    <div class="card-body text-center">
+                                        <div>
+                                            <h5 class="card-title titulo-card"><i class="fa fa-clock-o"
+                                                    style="color: #256e00;"></i> Tempo de preparo:</h5>
+                                            <p class=" card-text texto-card"> 50 minutos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-md-6 mb-3 mb-sm-0">
+                                <div class="card"> <!--Para mostrar dificuldade ao fazer a receita-->
+                                    <div class="card-body text-center">
+                                        <div>
+                                            <h5 class="card-title titulo-card"><i class="fa fa-cutlery"
+                                                    style="color: #256e00;"></i> Dificuldade:</h5>
+                                            <p class=" card-text texto-card"> Média</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="my-4 receita-conteudo"> <!--Ingredientes-->
+                            <div class="receita-conteudo-titulo">
+                                <h4 class="text-center py-2">Ingredientes</h4>
+                            </div>
+                            <ul id="ingredientes" class="row">
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                                <li class="col-md-6">
+                                    <p></p>
+                                </li>
+                            </ul>
+                        </div> <!--Fim ingredientes-->
+
+                        <div class="my-4 receita-conteudo"> <!--Modo de Preparo-->
+                            <div class="receita-conteudo-titulo">
+                                <h4 class="py-2">Modo de
+                                    Preparo</h4>
+                            </div>
+                            <div>
+                                <ol id="modo-de-preparo">
+                                    <li></li>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div> <!--Fim Modo de preparo-->
+                    </div>
+                </div>
+        </section>
+
+        <section> <!--Imagens do conteúdo selecionado-->
+            <div class="display-5 text-center pb-2 mb-4 border-bottom border-black border-2">
+                Olha estes resultados...
+            </div>
+            <div class="container my-5 fotos-conteudo"> <!--Fotos do conteúdo-->
+                <div class="d-md-flex overflow-auto gap-3 pt-3 fotos-item">
+                    <div class="col-md-3 text-center">
+                        <img src="assets/img/bolo-de-cenoura1.jpg" class="img-thumbnail img-fluid"
+                            alt="Bolo de cenoura sem cobertura" style="height: 300px; width: 200px;">
+                        <p class="text-break mt-2"></p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img src="assets/img/bolo-de-cenoura2.jpg" class="img-thumbnail img-fluid"
+                            alt="Fatia de Bolo de Cenoura com cobertura" style="height: 300px; width: 200px;">
+                        <p class="text-break mt-2"></p>
+                    </div>
+
+                    <div class="col-md-3 text-center">
+                        <img src="assets/img/bolo-de-cenoura3.jpg" class="img-thumbnail img-fluid"
+                            alt="Fatia de Bolo de Cenoura com cobertura" style="height: 300px; width: 200px;">
+                        <p class="text-break mt-2"></p>
+                    </div>
+
+                    <div class="col-md-3 text-center">
+                        <img src="assets/img/bolo-de-cenoura4.jpg" class="img-thumbnail img-fluid"
+                            alt="Bolo de cenoura com cobertura" style="height: 300px; width: 200px;">
+                        <p class="text-break mt-2"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

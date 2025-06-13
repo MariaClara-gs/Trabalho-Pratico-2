@@ -10,22 +10,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/bolo-de-cenoura1.jpg",
+                    "img": "/assets/img/bolo-de-cenoura1.jpg",
                     "legenda": "Bolo de cenoura recém-assado"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/bolo-de-cenoura2.jpg",
+                    "img": "/assets/img/bolo-de-cenoura2.jpg",
                     "legenda": "Fatia servida com cobertura"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/bolo-de-cenoura3.jpg",
+                    "img": "/assets/img/bolo-de-cenoura3.jpg",
                     "legenda": "Massa no liquidificador"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/bolo-de-cenoura4.jpg",
+                    "img": "/assets/img/bolo-de-cenoura4.jpg",
                     "legenda": "Ganache de chocolate brilhante"
                 }
             ],
@@ -58,22 +58,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/lasanha-a-bolonhesa1.jpg",
+                    "img": "/assets/img/lasanha-a-bolonhesa1.jpg",
                     "legenda": "Pedaço da Lasanha já servida"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/lasanha-a-bolonhesa2.jpg",
+                    "img": "/assets/img/lasanha-a-bolonhesa2.jpg",
                     "legenda": "Camadas de queijo e molho"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/lasanha-a-bolonhesa3.jpg",
+                    "img": "/assets/img/lasanha-a-bolonhesa3.jpg",
                     "legenda": "Fatia de lasanha com queijo em cima"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/lasanha-a-bolonesa4.jpg",
+                    "img": "/assets/img/lasanha-a-bolonesa4.jpg",
                     "legenda": "Fatia servida!"
                 }
             ],
@@ -106,22 +106,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/brigadeiro1.jpg",
+                    "img": "/assets/img/brigadeiro1.jpg",
                     "legenda": "Brigadeiro em forma de amor"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/brigadeiro2.jpg",
+                    "img": "/assets/img/brigadeiro2.jpg",
                     "legenda": "Docinhos enrolados e prontos"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/brigadeiro3.jpg",
+                    "img": "/assets/img/brigadeiro3.jpg",
                     "legenda": "Detalhe do granulado artesanal"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/brigadeiro4.jpg",
+                    "img": "/assets/img/brigadeiro4.jpg",
                     "legenda": "Massa cremosa à base de cacau"
                 }
             ],
@@ -151,22 +151,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/feijoada1.png",
+                    "img": "/assets/img/feijoada1.png",
                     "legenda": "Feijoada no prato já pronto"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/feijoada2.png",
+                    "img": "/assets/img/feijoada2.png",
                     "legenda": "Acompanhamentos tradicionais"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/feijoada3.png",
+                    "img": "/assets/img/feijoada3.png",
                     "legenda": "Prato servido com laranja e couve"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/feijoada4.jpg",
+                    "img": "/assets/img/feijoada4.jpg",
                     "legenda": "Carne seca e linguiça"
                 }
             ],
@@ -197,22 +197,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/escondidinho1.png",
+                    "img": "/assets/img/escondidinho1.png",
                     "legenda": "Escondidinho fresco na travessa"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/escondidinho2.png",
+                    "img": "/assets/img/escondidinho2.png",
                     "legenda": "Camadas de purê e carne"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/escondidinho3.png",
+                    "img": "/assets/img/escondidinho3.png",
                     "legenda": "Purê cremoso de mandioca"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/escondidinho4.png",
+                    "img": "/assets/img/escondidinho4.png",
                     "legenda": "Finalização com queijo gratinado"
                 }
             ],
@@ -243,22 +243,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/torta1.png",
+                    "img": "/assets/img/torta1.png",
                     "legenda": "Corte mostrando recheio cremoso"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/torta2.png",
+                    "img": "/assets/img/torta2.png",
                     "legenda": "Raspas de limão para decorar"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/torta3.png",
+                    "img": "/assets/img/torta3.png",
                     "legenda": "Base de biscoito crocante"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/torta4.png",
+                    "img": "/assets/img/torta4.png",
                     "legenda": "Torta de limão pronta"
                 }
             ],
@@ -289,22 +289,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/quiche1.png",
+                    "img": "/assets/img/quiche1.png",
                     "legenda": "Fatia servida"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/quiche2.png",
+                    "img": "/assets/img/quiche2.png",
                     "legenda": "Recheio cremoso de alho-poró"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/quiche3.png",
+                    "img": "/assets/img/quiche3.png",
                     "legenda": "Massa folhada dourada"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/quiche4.png",
+                    "img": "/assets/img/quiche4.png",
                     "legenda": "Quiche recém saiu do forno"
                 }
             ],
@@ -335,22 +335,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/panqueca1.png",
+                    "img": "/assets/img/panqueca1.png",
                     "legenda": "Panquecas recheadas prontas"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/panqueca2.png",
+                    "img": "/assets/img/panqueca2.png",
                     "legenda": "Inclua um molho especial por cima!"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/panqueca3.png",
+                    "img": "/assets/img/panqueca3.png",
                     "legenda": "Recheio de frango cremoso"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/panqueca4.png",
+                    "img": "/assets/img/panqueca4.png",
                     "legenda": "Panquecas prontas para serem consumidas"
                 }
             ],
@@ -380,22 +380,22 @@
             "images": [
                 {
                     "id": 1,
-                    "img": "assets/img/macarrao1.png",
+                    "img": "/assets/img/macarrao1.png",
                     "legenda": "Macarrão com acompanhamento"
                 },
                 {
                     "id": 2,
-                    "img": "assets/img/macarrao2.png",
+                    "img": "/assets/img/macarrao2.png",
                     "legenda": "Macarrão acompanhado de tomates"
                 },
                 {
                     "id": 3,
-                    "img": "assets/img/macarrao3.png",
+                    "img": "/assets/img/macarrao3.png",
                     "legenda": "Manjericão fresco por cima"
                 },
                 {
                     "id": 4,
-                    "img": "assets/img/macarrao4.png",
+                    "img": "/assets/img/macarrao4.png",
                     "legenda": "Detalhe do prato servido"
                 }
             ],

@@ -84,7 +84,7 @@
     </div>
   </div>
 
-    <script src="./scripts/login.js"></script>
+    <script src="assets/scripts/login.js"></script>
     <script>
 
         // Declara uma função para processar o formulário de login
@@ -100,8 +100,9 @@
                 resultadoLogin = loginUser (username, password);
 
                 if (resultadoLogin) {
-                    window.location.href = 'http://localhost:3000/';
                     localStorage.setItem('resultadoLogin', 'true');
+                    sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
+                    window.location.href = 'http://localhost:3000/';
                 }
                 else { // Se login falhou, avisa ao usuário
                     alert ('Usuário ou senha incorretos');

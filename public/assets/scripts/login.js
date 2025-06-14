@@ -2,7 +2,7 @@
 
 // Página inicial de Login
 const LOGIN_URL = "login.html";
-const apiUrl = '/usuarios';
+const apiUrl = 'http://localhost:3000/usuarios/';
 
 // Objeto para o banco de dados de usuários baseado em JSON
 var db_usuarios = {};
@@ -32,8 +32,8 @@ function generateUUID() { // Public Domain/MIT
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com"},
-        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com"},
+        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "favoritos": "[1, 2]"},
+        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "favoritos": "[1, 2]"},
     ]
 };
 
@@ -72,6 +72,7 @@ function loginUser (login, senha) {
             usuarioCorrente.login = usuario.login;
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.nome = usuario.nome;
+            usuarioCorrente.favoritos = usuario.favoritos;
 
             // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
             sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
@@ -91,13 +92,14 @@ function logoutUser () {
     sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
     window.location = LOGIN_URL;
     localStorage.setItem('resultadoLogin', 'false');
+    sessionStorage.removeItem('usuarioCorrente');
 }
 
-function addUser (nome, login, senha, email) {
+function addUser (nome, login, senha, email, favoritos) {
 
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID ();
-    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email };
+    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "favoritos": favoritos};
 
     // Envia dados do novo usuário para ser inserido no JSON Server
     fetch(apiUrl, {

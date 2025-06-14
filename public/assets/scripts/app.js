@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
+  const usuarioLogadoJSON = sessionStorage.getItem('usuarioCorrente');
   const logEl = document.getElementById('log');
 
   if (logEl) {
     if (resultadoLogin) {
       logEl.textContent = 'Logout';
       logEl.href = '';
-      logEl.addEventListener('click', (e) =>{
+      logEl.addEventListener('click', (e) => {
         e.preventDefault();
         localStorage.removeItem('resultadoLogin');
+        sessionStorage.removeItem('usuarioCorrente');
         window.location.href = 'index.html';
       })
     } else {
       logEl.textContent = 'Login';
-      logEl.href = '/app_login/login.html';
+      logEl.href = 'login.html';
     }
   }
 });
@@ -65,47 +67,77 @@ fetch('http://localhost:3000/receitas')
 
     // Função para montar os cards
     function gerarCards(lista) {
-      const container = document.getElementById('container-cards');
-      if (!container) return;
+  const container = document.getElementById('container-cards');
+  if (!container) return;
 
-      if (lista.length === 0) {
-        container.innerHTML = `
-          <div class="col-12 text-center mt-4 erro-card">
-            <h4>Nenhuma receita encontrada.</h4>
-            <p>Tente outra palavra ou <a href="index.html" class="btn btn-success mt-2 voltar">volte à página inicial</a>.</p>
-          </div>
-        `;
-        return;
-      }
-      const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
-      let html = '';
-      lista.forEach(r => {
-        html += `
-          <div class="col">
-            <div class="card h-100">
-              <a href="detalhes.html?id=${r.id}">
-                <img src="${r.images[0].img}" class="card-img-top" alt="${r.titulo}">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title">${r.titulo}</h5>
-                <h6 class="card-subtitle mb-2">${r.ocasiao}</h6>
-                <p class="card-text">${r.descricao}</p>
-                <a href="detalhes.html?id=${r.id}" class="link-light">
-                  <button type="button" class="btn" style="background-color:#4c9628;">Ver mais</button>
-                </a>
-                ${resultadoLogin ? `
+  if (lista.length === 0) {
+    container.innerHTML = `
+      <div class="col-12 text-center mt-4 erro-card">
+        <h4>Nenhuma receita encontrada.</h4>
+        <p>Tente outra palavra ou <a href="index.html" class="btn btn-success mt-2 voltar">volte à página inicial</a>.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
+  let favoritosUsuario = [];
+  
+  if (resultadoLogin) {
+    const usuario = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+    if (usuario && usuario.favoritos) {
+      favoritosUsuario = usuario.favoritos;
+    }
+  }
+
+  let html = '';
+  lista.forEach(r => {
+    const estaFavorito = favoritosUsuario.includes(r.id);
+    html += `
+      <div class="col">
+        <div class="card h-100">
+          <a href="detalhes.html?id=${r.id}">
+            <img src="${r.images[0].img}" class="card-img-top" alt="${r.titulo}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">${r.titulo}</h5>
+            <h6 class="card-subtitle mb-2">${r.ocasiao}</h6>
+            <p class="card-text">${r.descricao}</p>
+            <a href="detalhes.html?id=${r.id}" class="link-light">
+              <button type="button" class="btn" style="background-color:#4c9628;">Ver mais</button>
+            </a>
+            ${resultadoLogin ? `
               <button class="btn btn-outline-danger mt-2 btn-favoritar" data-id="${r.id}">
-                <i class="bi bi-heart"></i>
+                <i class="bi ${estaFavorito ? 'bi-heart-fill' : 'bi-heart'}"></i>
               </button>
             ` : ''}
-              </div>
-            </div>
           </div>
-        `;
-      });
+        </div>
+      </div>
+    `;
+  });
 
-      container.innerHTML = html;
-    }
+  container.innerHTML = html;
+
+  if (resultadoLogin) {
+    document.querySelectorAll('.btn-favoritar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        favoritarReceita(id);
+        // Alterar o ícone no clique, enquanto aguarda o fetch:
+        const icon = btn.querySelector('i');
+        if (icon.classList.contains('bi-heart-fill')) {
+          icon.classList.remove('bi-heart-fill');
+          icon.classList.add('bi-heart');
+        } else {
+          icon.classList.remove('bi-heart');
+          icon.classList.add('bi-heart-fill');
+        }
+      });
+    });
+  }
+}
+
 
     // Exibir todos ao carregar
     gerarCards(receitas);
@@ -154,7 +186,41 @@ fetch('http://localhost:3000/receitas')
 
     //título
     const tituloEl = document.querySelector('main .display-5.text-center');
-    if (tituloEl) tituloEl.textContent = receita.titulo;
+
+    if (tituloEl) {
+      tituloEl.textContent = receita.titulo;
+      const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
+
+      if (resultadoLogin) {
+        const usuario = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+        let estaFavorito = false;
+
+        if (usuario && usuario.favoritos) {
+          estaFavorito = usuario.favoritos.includes(receita.id);
+        }
+
+        const btnFavorito = document.createElement('button');
+        btnFavorito.className = 'btn btn-outline-danger ms-3 btn-favoritar';
+        // Ícone preenchido ou vazio conforme favorito
+        btnFavorito.innerHTML = `<i class="bi ${estaFavorito ? 'bi-heart-fill' : 'bi-heart'}"></i>`;
+        btnFavorito.setAttribute('data-id', receita.id);
+
+        tituloEl.appendChild(btnFavorito);
+
+        btnFavorito.addEventListener('click', () => {
+          favoritarReceita(receita.id);
+          // Toggle visual imediato do coração:
+          const icon = btnFavorito.querySelector('i');
+          if (icon.classList.contains('bi-heart-fill')) {
+            icon.classList.remove('bi-heart-fill');
+            icon.classList.add('bi-heart');
+          } else {
+            icon.classList.remove('bi-heart');
+            icon.classList.add('bi-heart-fill');
+          }
+        });
+      }
+    }
 
     //imagem da receita
     const imgPrincipal = document.querySelector('.div-img .img-conteudo');
@@ -297,5 +363,68 @@ function montarMapa(receitas) {
       .setPopup(popup)
       .addTo(map);
   });
+}
+
+//favoritos
+function favoritarReceita(idReceita) {
+  const usuario = JSON.parse(sessionStorage.getItem('usuarioCorrente'));
+  if (!usuario || !usuario.id) {
+    alert('Você precisa estar logado para favoritar receitas.');
+    return;
+  }
+
+  fetch(`http://localhost:3000/usuarios/${usuario.id}`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Erro ao buscar dados do usuário.');
+      }
+      return res.json();
+    })
+    .then(usuarioCompleto => {
+      console.log('Usuário do servidor:', usuarioCompleto);
+
+      const favoritosAtuais = usuarioCompleto.favoritos || [];
+
+      const jaFavoritado = favoritosAtuais.includes(idReceita);
+
+      let novosFavoritos;
+      if (jaFavoritado) {
+        novosFavoritos = favoritosAtuais.filter(id => id !== idReceita);
+      } else {
+        novosFavoritos = [...favoritosAtuais, idReceita];
+      }
+
+      const usuarioAtualizado = {
+        ...usuarioCompleto,
+        favoritos: novosFavoritos
+      };
+
+      fetch(`http://localhost:3000/usuarios/${usuario.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuarioAtualizado)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Erro ao atualizar favoritos.');
+          }
+          return response.json();
+        })
+        .then(() => {
+          alert(jaFavoritado
+            ? 'Receita removida dos favoritos.'
+            : 'Receita adicionada aos favoritos.');
+        })
+        .catch(error => {
+          console.error('Erro na operação de favoritar:', error);
+          alert('Ocorreu um erro ao processar sua solicitação de favoritos.');
+        });
+    })
+    .catch(error => {
+      console.error('Erro ao buscar usuário:', error);
+      alert('Ocorreu um erro ao carregar os dados do usuário.');
+    });
 }
 

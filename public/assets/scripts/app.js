@@ -1,7 +1,27 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
+  const logEl = document.getElementById('log');
+
+  if (logEl) {
+    if (resultadoLogin) {
+      logEl.textContent = 'Logout';
+      logEl.href = '';
+      logEl.addEventListener('click', (e) =>{
+        e.preventDefault();
+        localStorage.removeItem('resultadoLogin');
+        window.location.href = 'index.html';
+      })
+    } else {
+      logEl.textContent = 'Login';
+      logEl.href = '/app_login/login.html';
+    }
+  }
+});
+
 fetch('http://localhost:3000/receitas')
   .then(response => response.json())
   .then(receitas => {
-    //CARROSSEL
+    // CARROSSEL
     if (document.getElementById('ads')) {
       const receitasDestaque = receitas.slice(0, 3);
 
@@ -24,10 +44,7 @@ fetch('http://localhost:3000/receitas')
         innerHTML += `
           <div class="carousel-item ${i === 0 ? 'active' : ''}" data-bs-interval="3000">
             <a href="detalhes.html?id=${r.id}">
-              <img
-                src="${r.images[0].img}"
-                class="d-block w-100"
-                alt="${r.titulo}">
+              <img src="${r.images[0].img}" class="d-block w-100" alt="${r.titulo}">
               <div class="carousel-caption d-none d-md-block">
                 <h5>${r.titulo}</h5>
                 <p>${r.descricao}</p>
@@ -36,56 +53,79 @@ fetch('http://localhost:3000/receitas')
           </div>
         `;
       });
-
       document.querySelector('#ads .carousel-inner').innerHTML = innerHTML;
     }
 
-    //Pesquisa
     const ul = document.getElementById('listaReceitas');
     receitas.forEach((item) => {
       const li = document.createElement('li');
-      li.innerHTML = `
-         <a href="detalhes.html?id=${item.id}"><span class="item-name">${item.titulo}</span></a>`;
+      li.innerHTML = `<a href="detalhes.html?id=${item.id}"><span class="item-name">${item.titulo}</span></a>`;
       ul.appendChild(li);
     });
 
-    /*CARDS*/
-    if (document.getElementById('container-cards')) {
-      const todas = receitas;
-      let txtHTMLCards = '';
+    // Função para montar os cards
+    function gerarCards(lista) {
+      const container = document.getElementById('container-cards');
+      if (!container) return;
 
-      for (let i = 0; i < todas.length; i++) {
-        const r = todas[i];
-        txtHTMLCards += `
+      if (lista.length === 0) {
+        container.innerHTML = `
+          <div class="col-12 text-center mt-4 erro-card">
+            <h4>Nenhuma receita encontrada.</h4>
+            <p>Tente outra palavra ou <a href="index.html" class="btn btn-success mt-2 voltar">volte à página inicial</a>.</p>
+          </div>
+        `;
+        return;
+      }
+      const resultadoLogin = localStorage.getItem('resultadoLogin') === 'true';
+      let html = '';
+      lista.forEach(r => {
+        html += `
           <div class="col">
             <div class="card h-100">
               <a href="detalhes.html?id=${r.id}">
-                <img src="${r.images[0].img}"
-                     class="card-img-top"
-                     alt="${r.titulo}">
+                <img src="${r.images[0].img}" class="card-img-top" alt="${r.titulo}">
               </a>
               <div class="card-body">
                 <h5 class="card-title">${r.titulo}</h5>
                 <h6 class="card-subtitle mb-2">${r.ocasiao}</h6>
-                <p class="card-text">
-                  ${r.descricao}
-                </p>
+                <p class="card-text">${r.descricao}</p>
                 <a href="detalhes.html?id=${r.id}" class="link-light">
-                  <button type="button"
-                          class="btn"
-                          style="background-color:#4c9628;">
-                    Ver mais
-                  </button>
+                  <button type="button" class="btn" style="background-color:#4c9628;">Ver mais</button>
                 </a>
+                ${resultadoLogin ? `
+              <button class="btn btn-outline-danger mt-2 btn-favoritar" data-id="${r.id}">
+                <i class="bi bi-heart"></i>
+              </button>
+            ` : ''}
               </div>
             </div>
           </div>
         `;
-      }
+      });
 
-      document.getElementById('container-cards').innerHTML = txtHTMLCards;
+      container.innerHTML = html;
     }
 
+    // Exibir todos ao carregar
+    gerarCards(receitas);
+
+    // Quando clicar no botão de pesquisa
+    const btnPesquisar = document.getElementById('btn-pesquisar');
+    const inputPesquisa = document.getElementById('barra-pesquisa');
+
+    btnPesquisar.addEventListener('click', () => {
+      const termo = inputPesquisa.value.trim().toLowerCase();
+
+      if (termo === '') {
+        gerarCards(receitas); // Mostra todas
+      } else {
+        const filtradas = receitas.filter(r =>
+          r.titulo.toLowerCase().includes(termo)
+        );
+        gerarCards(filtradas);
+      }
+    });
   });
 
 /*Página Detalhes*/
@@ -196,9 +236,9 @@ function filtrarPesquisa() {
   var span;
 
   if (filter === "") {
-        ul.style.display = "none";
-        return;
-    }
+    ul.style.display = "none";
+    return;
+  }
 
 
   for (let i = 0; i < li.length; i++) {
@@ -226,3 +266,36 @@ function filtrarPesquisa() {
     ul.style.display = 'block';
   }
 }
+
+//Tela da funcionalidade com Mapbox
+
+window.onload = () => {
+  fetch('http://localhost:3000/receitas').then(res => res.json())
+    .then(receitas => {
+      //Mapbox
+      montarMapa(receitas);
+    });
+}
+
+//contrução do mapa
+function montarMapa(receitas) {
+  const centralLatLong = [-51.9253, -14.2350];
+  let map;
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWFyaWEtY2xhcjQiLCJhIjoiY21iY2RtbjF1MXRvbzJycTU2bHg2aHNjcCJ9.O-GR7NBIwc5m8XZmZR2g3w';
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/maria-clar4/cmbcggkcy003b01s1e1zihwh0',
+    center: centralLatLong,
+    zoom: 3
+  });
+
+  receitas.forEach((uni) => {
+    let popup = new mapboxgl.Popup({ offset: 25 })
+      .setHTML(`<h3><a href="${uni.url}" target="_blank">${uni.titulo}</a></h3><br>${uni.descricao}<br>${uni.cidade} <br> ${uni.pais}`);
+    const marker = new mapboxgl.Marker({ color: uni.cor })
+      .setLngLat(uni.latlong)
+      .setPopup(popup)
+      .addTo(map);
+  });
+}
+

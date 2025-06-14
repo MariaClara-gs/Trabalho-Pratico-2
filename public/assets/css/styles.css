@@ -12,6 +12,10 @@ footer{
     padding: 10px;
 }
 
+main{
+    padding: 20px;
+}
+
 /*Barra de navegação*/
 .logo{
     width: 300px;
@@ -121,12 +125,19 @@ footer{
     justify-content: center;
 }
 
-.botao-pesquisa{
-    margin-bottom: 10px;
+#form-pesquisa{
+    display: flex;
+    align-items: center;
 }
 
-.botao-pesquisa{
-    margin-bottom: 10px;
+#btn-pesquisar{
+    margin: 5px;
+}
+
+#container-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .buscar{
@@ -144,7 +155,7 @@ footer{
     padding-left: 20px;
     font-size: 22px;
     border: 1px solid #ddd;
-    margin: 15px;
+    margin: 5px;
     border-radius: 5px;
 }
 
@@ -171,6 +182,52 @@ footer{
 
 #listaReceitas li a:hover{
     background-color: #eee;
+}
+
+/*Mapa*/
+
+.titulos{
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #808927;
+    text-align: center;
+    font-size: 250%;
+}
+
+.lista-titulo{
+    font-size: 1.3em;
+}
+
+.lista-titulo :hover{
+    color: #808927;
+    font-size: 1.35em;
+}
+
+.mapa{
+    display: flex;
+    justify-content: center;
+}
+
+#map{
+    width: 700px; 
+    height: 600px;
+}
+
+#selecao-receitas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+#selecao-receitas-col-1{
+    width: 300px;
+    padding: 10px;
+}
+
+#selecao-receitas-col-2{
+    width: 300px;
+    padding: 10px;
 }
 
 /*Media queries*/

@@ -1,7 +1,6 @@
 fetch('http://localhost:3000/receitas')
   .then(response => response.json())
   .then(receitas => {
-
     //CARROSSEL
     if (document.getElementById('ads')) {
       const receitasDestaque = receitas.slice(0, 3);
@@ -37,8 +36,18 @@ fetch('http://localhost:3000/receitas')
           </div>
         `;
       });
+
       document.querySelector('#ads .carousel-inner').innerHTML = innerHTML;
     }
+
+    //Pesquisa
+    const ul = document.getElementById('listaReceitas');
+    receitas.forEach((item) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+         <a href="detalhes.html?id=${item.id}"><span class="item-name">${item.titulo}</span></a>`;
+      ul.appendChild(li);
+    });
 
     /*CARDS*/
     if (document.getElementById('container-cards')) {
@@ -76,18 +85,22 @@ fetch('http://localhost:3000/receitas')
 
       document.getElementById('container-cards').innerHTML = txtHTMLCards;
     }
+
   });
 
 /*Página Detalhes*/
 fetch('http://localhost:3000/receitas')
   .then(response => response.json())
   .then(receitas => {
-      //id
-      const params = new URLSearchParams(window.location.search);
-      const id = parseInt(params.get('id'), 10);
-      const receita = receitas.find(r => r.id === id);
+    //id
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'), 10);
+    const receita = receitas.find(r => {
+      console.log('Comparando:', r.id, '===', id);
+      return String(r.id) === String(id);
+    });
 
-      if (!receita) {
+    if (!receita) {
       const main = document.getElementById('main-detalhes');
       main.innerHTML = `
         <div class="text-center" style="margin-top: 2rem;">
@@ -99,68 +112,68 @@ fetch('http://localhost:3000/receitas')
       return; // Para o restante da execução
     }
 
-      //título
-      const tituloEl = document.querySelector('main .display-5.text-center');
-      if (tituloEl) tituloEl.textContent = receita.titulo;
+    //título
+    const tituloEl = document.querySelector('main .display-5.text-center');
+    if (tituloEl) tituloEl.textContent = receita.titulo;
 
-      //imagem da receita
-      const imgPrincipal = document.querySelector('.div-img .img-conteudo');
-      if (imgPrincipal) {
-        imgPrincipal.src = receita.images[0].img;
-        imgPrincipal.alt = receita.titulo;
-      }
+    //imagem da receita
+    const imgPrincipal = document.querySelector('.div-img .img-conteudo');
+    if (imgPrincipal) {
+      imgPrincipal.src = receita.images[0].img;
+      imgPrincipal.alt = receita.titulo;
+    }
 
-      //dica de ocasião
-      const subtituloEl = document.querySelector('.titulo-2');
-      if (subtituloEl) subtituloEl.textContent = receita.ocasiao;
+    //dica de ocasião
+    const subtituloEl = document.querySelector('.titulo-2');
+    if (subtituloEl) subtituloEl.textContent = receita.ocasiao;
 
-      //descrição
-      const descEl = document.querySelector('.texto-layout');
-      if (descEl) descEl.textContent = receita.descricao;
+    //descrição
+    const descEl = document.querySelector('.texto-layout');
+    if (descEl) descEl.textContent = receita.descricao;
 
-      //tempo de preparo
-      const tempoP = document.querySelector('.fa-clock-o')
-        ?.closest('.card-body')
-        ?.querySelector('.texto-card');
-      if (tempoP) tempoP.textContent = receita.prepTime;
+    //tempo de preparo
+    const tempoP = document.querySelector('.fa-clock-o')
+      ?.closest('.card-body')
+      ?.querySelector('.texto-card');
+    if (tempoP) tempoP.textContent = receita.prepTime;
 
-      //nível de dificuldade da receita
-      const diffP = document.querySelector('.fa-cutlery')
-        ?.closest('.card-body')
-        ?.querySelector('.texto-card');
-      if (diffP) diffP.textContent = receita.dificuldade;
+    //nível de dificuldade da receita
+    const diffP = document.querySelector('.fa-cutlery')
+      ?.closest('.card-body')
+      ?.querySelector('.texto-card');
+    if (diffP) diffP.textContent = receita.dificuldade;
 
-      //ingredientes
-      const ulIng = document.getElementById('ingredientes');
-      if (ulIng) {
-        ulIng.innerHTML = '';
-        receita.ingredientes.forEach(item => {
-          const li = document.createElement('li');
-          li.className = 'col-md-6';
-          li.innerHTML = `<p>${item}</p>`;
-          ulIng.appendChild(li);
-        });
-      }
+    //ingredientes
+    const ulIng = document.getElementById('ingredientes');
+    if (ulIng) {
+      ulIng.innerHTML = '';
+      receita.ingredientes.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'col-md-6';
+        li.innerHTML = `<p>${item}</p>`;
+        ulIng.appendChild(li);
+      });
+    }
 
-      //modo de preparo
-      const olPrep = document.getElementById('modo-de-preparo');
-      if (olPrep) {
-        olPrep.innerHTML = '';
-        receita.preparo.forEach(step => {
-          const li = document.createElement('li');
-          li.textContent = step;
-          olPrep.appendChild(li);
-        });
-      }
+    //modo de preparo
+    const olPrep = document.getElementById('modo-de-preparo');
+    if (olPrep) {
+      olPrep.innerHTML = '';
+      receita.preparo.forEach(step => {
+        const li = document.createElement('li');
+        li.textContent = step;
+        olPrep.appendChild(li);
+      });
+    }
 
-      //fotos da receita
-      const fotosContainer = document.querySelector('.fotos-item');
-      if (fotosContainer) {
-        fotosContainer.innerHTML = '';
-        receita.images.forEach(imgObj => {
-          const div = document.createElement('div');
-          div.className = 'col-md-3 text-center';
-          div.innerHTML = `
+    //fotos da receita
+    const fotosContainer = document.querySelector('.fotos-item');
+    if (fotosContainer) {
+      fotosContainer.innerHTML = '';
+      receita.images.forEach(imgObj => {
+        const div = document.createElement('div');
+        div.className = 'col-md-3 text-center';
+        div.innerHTML = `
             <img
               src="${imgObj.img}"
               class="img-thumbnail img-fluid"
@@ -168,7 +181,48 @@ fetch('http://localhost:3000/receitas')
               style="height: 300px; width: 200px;">
             <p class="text-break mt-2">${imgObj.legenda}</p>
           `;
-          fotosContainer.appendChild(div);
+        fotosContainer.appendChild(div);
+      });
+    }
+  });
+
+//filtrar por pesquisa
+function filtrarPesquisa() {
+  var input = document.getElementById('barra-pesquisa');
+  var filter = input.value.toUpperCase();
+  var ul = document.getElementById('listaReceitas');
+  var li = ul.getElementsByTagName('li');
+  var count = 0;
+  var span;
+
+  if (filter === "") {
+        ul.style.display = "none";
+        return;
+    }
+
+
+  for (let i = 0; i < li.length; i++) {
+    var a = li[i].getElementsByTagName('a')[0];
+    var txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = '';
+      count++;
+      span = li[i].querySelector(".item-name");
+      if (span) {
+        span.innerHTML = txtValue.replace(new RegExp(filter, 'gi'), (match) => {
+          return "<strong>" + match + "</strong>";
         });
+      } else {
+        li[i].style.display = "none";
       }
-    }); 
+    } else {
+      li[i].style.display = 'none';
+    }
+  }
+
+  if (count === 0) {
+    ul.style.display = 'none';
+  } else {
+    ul.style.display = 'block';
+  }
+}

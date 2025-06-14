@@ -46,6 +46,11 @@ footer{
 /*Conteúdo de Detalhes.html*/
 
 /*Layout personalizado*/
+.borda{
+    width: auto;
+    height: 2px;
+}
+
 .img-conteudo{
     width: 3131px;
     height: 4196px;
@@ -116,6 +121,58 @@ footer{
     justify-content: center;
 }
 
+.botao-pesquisa{
+    margin-bottom: 10px;
+}
+
+.botao-pesquisa{
+    margin-bottom: 10px;
+}
+
+.buscar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.buscar input{
+    width: 75%;
+    height: 50px;
+    padding-left: 20px;
+    font-size: 22px;
+    border: 1px solid #ddd;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+#listaReceitas{
+    width: 80%;
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 70px;
+    z-index: 999;
+}
+
+#listaReceitas li a{
+    display: flex;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    padding: 12px;
+}
+
+#listaReceitas li a:hover{
+    background-color: #eee;
+}
+
 /*Media queries*/
 
 @media screen and (max-width:810px) {
@@ -171,5 +228,4 @@ footer{
     .receita-conteudo-titulo{
         background-color: white;
     }
-
 }

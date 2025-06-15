@@ -393,3 +393,50 @@ main{
         background-color: white;
     }
 }
+
+@media screen and (max-width:500px){
+    
+    .titulo-cadastro{
+        font-size: 30px;
+    }
+    
+    .cadastro{
+        margin: 10px;
+        padding: 10px;
+        width: auto;
+    }
+
+    .cadastro form div{
+        margin: 10px;
+    }
+    
+    .cadastro form div p{
+        font-size: 1em;
+    }
+    
+    .titulo input{
+        width: 300px;
+    }
+    
+    .ingrediente input{
+        width: 300px;
+    }
+    
+    .preparo input{
+        width: 300px;
+    }
+    
+    .descricao input{
+        width: 300px;
+    }
+
+    .tabela{
+        width: 400px;
+        font-size: 0.85em;
+    }
+
+    #map{
+        width: 400px; 
+        height: 300px;
+    }
+}

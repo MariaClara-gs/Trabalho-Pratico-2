@@ -26,7 +26,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="menuNavbar">
                     <div class="navbar-nav ms-auto">
-                        <a href="cadastro_itens.html" class="categorias nav-link m-2.5">Cadastro</a>
+                        <a href="cadastro_itens.html" class="categorias nav-link m-2.5" id="cadastro">Cadastro</a>
                         <a href="favoritos.html" class="categorias nav-link m-2.5">Favoritos</a>
                         <a href="login.html" class="categorias nav-link m-2.5" id="log">Login|Logout</a>
                     </div>
@@ -46,12 +46,7 @@
                         <p>Título:</p>
                         <input type="text" name="titulo" id="titulo" value="Título da receita">
                     </div>
-    
-                    <!--<div class="flex-column imagem"> Imagem
-                        <p>Imagem:</p>
-                        <input type="file" name="imagem" id="imagem-receita">
-                    </div>-->
-    
+
                     <div class="flex-column ingrediente">
                         <p>Ingredientes:</p>
                         <textarea name="ingrediente" id="ingredientes" placeholder="Digite os ingredientes separados por ponto final."></textarea>
@@ -81,8 +76,6 @@
                         <p>Dificuldade:</p>
                         <textarea name="dificuldade" id="dificuldade" placeholder="Dificuldade da receita"></textarea>
                     </div>
-
-
       
 
                     <div class="flex-column botao">
@@ -113,6 +106,9 @@
                         <th scope="col">Descrição</th>
                         <th scope="col">Ingredientes</th>
                         <th scope="col">Modo de Preparo</th>
+                        <th scope="col">Ocasião</th>
+                        <th scope="col">Tempo de preparo</th>
+                        <th scope="col">Dificuldade</th>
                       </tr>
                     </thead>
                     <tbody id="info">

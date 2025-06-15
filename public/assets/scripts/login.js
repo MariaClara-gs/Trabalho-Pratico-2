@@ -32,8 +32,8 @@ function generateUUID() { // Public Domain/MIT
 // Dados de usuários para serem utilizados como carga inicial
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "favoritos": "[1, 2]"},
-        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "favoritos": "[1, 2]"},
+        { "id": generateUUID (), "login": "admin", "senha": "123", "nome": "Administrador do Sistema", "email": "admin@abc.com", "favoritos": "[1, 2]", "admin": "true"},
+        { "id": generateUUID (), "login": "user", "senha": "123", "nome": "Usuario Comum", "email": "user@abc.com", "favoritos": "[1, 2]", "admin": "false"},
     ]
 };
 
@@ -73,6 +73,7 @@ function loginUser (login, senha) {
             usuarioCorrente.email = usuario.email;
             usuarioCorrente.nome = usuario.nome;
             usuarioCorrente.favoritos = usuario.favoritos;
+            usuarioCorrente.admin = usuario.admin;
 
             // Salva os dados do usuário corrente no Session Storage, mas antes converte para string
             sessionStorage.setItem ('usuarioCorrente', JSON.stringify (usuarioCorrente));
@@ -95,11 +96,11 @@ function logoutUser () {
     sessionStorage.removeItem('usuarioCorrente');
 }
 
-function addUser (nome, login, senha, email, favoritos) {
+function addUser (nome, login, senha, email, favoritos, admin) {
 
     // Cria um objeto de usuario para o novo usuario 
     let newId = generateUUID ();
-    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "favoritos": favoritos};
+    let usuario = { "id": newId, "login": login, "senha": senha, "nome": nome, "email": email, "favoritos": favoritos, "admin": admin};
 
     // Envia dados do novo usuário para ser inserido no JSON Server
     fetch(apiUrl, {

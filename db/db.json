@@ -7,9 +7,8 @@
       "nome": "Administrador do Sistema",
       "email": "admin@abc.com",
       "favoritos": [
-        1,
         3,
-        5
+        2
       ],
       "admin": true
     },
@@ -19,10 +18,7 @@
       "senha": "123",
       "nome": "Usuario Comum",
       "email": "user@abc.com",
-      "favoritos": [
-        1,
-        2
-      ],
+      "favoritos": [],
       "admin": false
     },
     {
@@ -31,11 +27,7 @@
       "senha": "12345",
       "nome": "Rommel Carneiro",
       "email": "rommel@abc.com",
-      "favoritos": [
-        1,
-        2,
-        3
-      ],
+      "favoritos": [],
       "admin": false
     },
     {
@@ -44,18 +36,13 @@
       "senha": "123456",
       "nome": "Maria Clara",
       "email": "maria@gmail.com",
-      "favoritos": [
-        1,
-        2,
-        3,
-        4
-      ],
+      "favoritos": [],
       "admin": true
     }
   ],
   "receitas": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Bolo de Cenoura",
       "descricao": "Um clássico fofinho com cobertura de chocolate.",
       "ocasiao": "Perfeito para o café da manhã ou para um lanche da tarde.",
@@ -114,7 +101,7 @@
       "cor": "ForestGreen"
     },
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Lasanha à Bolonhesa",
       "descricao": "Camadas deliciosas de carne e queijo.",
       "ocasiao": "Ideal para um almoço de família.",
@@ -173,7 +160,7 @@
       "cor": "Crimson"
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Brigadeiro Gourmet",
       "descricao": "O docinho favorito com um toque especial.",
       "ocasiao": "Sirva em festas ou como sobremesa delicada.",
@@ -226,7 +213,7 @@
       "cor": "ForestGreen"
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Feijoada Completa",
       "descricao": "O prato mais brasileiro de todos.",
       "ocasiao": "Perfeita para um almoço de domingo em família.",
@@ -280,7 +267,7 @@
       "cor": "ForestGreen"
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Escondidinho de Carne",
       "descricao": "Recheio cremoso com purê de mandioca.",
       "ocasiao": "Ótimo para um jantar aconchegante.",
@@ -337,7 +324,7 @@
       "cor": "ForestGreen"
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Torta de Limão",
       "descricao": "Refrescante, doce e com base crocante.",
       "ocasiao": "Sobremesa perfeita para dias quentes.",
@@ -394,7 +381,7 @@
       "cor": "RoyalBlue"
     },
     {
-      "id": 7,
+      "id": "7",
       "titulo": "Quiche de Alho-Poró",
       "descricao": "Perfeita para servir no lanche ou jantar leve.",
       "ocasiao": "Ótima para brunch ou piquenique.",
@@ -460,22 +447,22 @@
       "images": [
         {
           "id": 1,
-          "img": "/assets/img/panqueca1.png",
+          "img": "assets/img/panqueca1.png",
           "legenda": "Panquecas recheadas prontas"
         },
         {
           "id": 2,
-          "img": "/assets/img/panqueca2.png",
+          "img": "assets/img/panqueca2.png",
           "legenda": "Inclua um molho especial por cima!"
         },
         {
           "id": 3,
-          "img": "/assets/img/panqueca3.png",
+          "img": "assets/img/panqueca3.png",
           "legenda": "Recheio de frango cremoso"
         },
         {
           "id": 4,
-          "img": "/assets/img/panqueca4.png",
+          "img": "assets/img/panqueca4.png",
           "legenda": "Panquecas prontas para serem consumidas"
         }
       ],
@@ -491,12 +478,6 @@
         "Cubra com molho de tomate e queijo.",
         "Gratine no forno por 10–15 minutos.",
         "Sirva quente."
-      ],
-      "favoritar": false,
-      "categorias_id": [
-        3,
-        4,
-        5
       ],
       "cidade": "Paris",
       "pais": "França",
@@ -517,22 +498,22 @@
       "images": [
         {
           "id": 1,
-          "img": "/assets/img/macarrao1.png",
+          "img": "assets/img/macarrao1.png",
           "legenda": "Macarrão com acompanhamento"
         },
         {
           "id": 2,
-          "img": "/assets/img/macarrao2.png",
+          "img": "assets/img/macarrao2.png",
           "legenda": "Macarrão acompanhado de tomates"
         },
         {
           "id": 3,
-          "img": "/assets/img/macarrao3.png",
+          "img": "assets/img/macarrao3.png",
           "legenda": "Manjericão fresco por cima"
         },
         {
           "id": 4,
-          "img": "/assets/img/macarrao4.png",
+          "img": "assets/img/macarrao4.png",
           "legenda": "Detalhe do prato servido"
         }
       ],
@@ -548,8 +529,10 @@
         "Misture o macarrão escorrido com o alho e o azeite.",
         "Finalize com cheiro-verde e sirva imediatamente."
       ],
-      "favoritar": false,
-      "categorias_id": 1,
+      "categorias_id": [
+        2,
+        3
+      ],
       "cidade": "Nápoles",
       "pais": "Itália",
       "latlong": [
@@ -558,81 +541,31 @@
       ],
       "url": "http://localhost:3000/detalhes.html?id=9",
       "cor": "Crimson"
-    },
-    {
-      "id": 10,
-      "titulo": "Cookies com Gotas de Chocolate",
-      "descricao": "Crocante por fora, macio por dentro.",
-      "ocasiao": "Lanche rápido!",
-      "prepTime": "20 minutos",
-      "dificuldade": "Fácil",
-      "images": [
-        {
-          "id": 1,
-          "img": "",
-          "legenda": "Cookies"
-        },
-        {
-          "id": 2,
-          "img": "",
-          "legenda": "Cookies"
-        },
-        {
-          "id": 3,
-          "img": "",
-          "legenda": "Cookies"
-        },
-        {
-          "id": 4,
-          "img": "",
-          "legenda": "Cookies"
-        }
-      ],
-      "ingredientes": [
-        "ovo",
-        "1/2 xícara de açúcar",
-        "1/2 xícara de manteiga",
-        "1 xícara de farinha",
-        "Gotas de chocolate"
-      ],
-      "preparo": [
-        "Misture todos os ingredientes.",
-        "Modele e leve ao forno por 15 minutos a 180°C"
-      ],
-      "favoritar": false,
-      "cidade": "Boston",
-      "pais": "EUA",
-      "latlong": [
-        -71.09228901760886,
-        42.32201698658195
-      ],
-      "url": "http://localhost:3000/detalhes.html?id=10",
-      "cor": "SteelBlue"
     }
   ],
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "category": "Massas"
     },
     {
-      "id": 2,
+      "id": "2",
       "category": "Bolos e tortas"
     },
     {
-      "id": 3,
+      "id": "3",
       "category": "Almoço em família"
     },
     {
-      "id": 4,
+      "id": "4",
       "category": "Carnes"
     },
     {
-      "id": 5,
+      "id": "5",
       "category": "Lanches"
     },
     {
-      "id": 6,
+      "id": "6",
       "category": "Doces e sobremesas"
     }
   ]

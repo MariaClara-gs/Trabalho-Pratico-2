@@ -38,6 +38,14 @@
       "email": "maria@gmail.com",
       "favoritos": [],
       "admin": true
+    },
+    {
+      "id": "2f621b28-6924-4492-acaa-0a6ba1d5af43",
+      "login": "mariaclara",
+      "senha": "123",
+      "nome": "Maria Clara",
+      "email": "marai@gmail.com",
+      "favoritos": []
     }
   ],
   "receitas": [
@@ -438,7 +446,7 @@
       "cor": "LightSteelBlue"
     },
     {
-      "id": 8,
+      "id": "8",
       "titulo": "Panqueca de Frango",
       "descricao": "Com recheio cremoso e molho especial.",
       "ocasiao": "Almoço rápido e saboroso para a família.",
@@ -489,7 +497,7 @@
       "cor": "LightSteelBlue"
     },
     {
-      "id": 9,
+      "id": "9",
       "titulo": "Macarrão ao Alho e Óleo",
       "descricao": "Simplicidade e sabor em poucos minutos.",
       "ocasiao": "Ideal para um jantar rápido na semana.",
